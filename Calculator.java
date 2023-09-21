@@ -1,42 +1,72 @@
 import java.util.Scanner;
 public class Calculator {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        double num1, num2, result;
-        char operator;
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter first number: ");
-        num1 = input.nextDouble();
+        System.out.println("Welcome to the Calculator!");
+        System.out.println("Operations: +, -, *, /");
 
-        System.out.println("Enter operator (+, -, *, /): ");
-        operator = input.next().charAt(0);
+        while (true) {
+            System.out.print("Enter the first number: ");
+            double num1 = scanner.nextDouble();
 
-        System.out.println("Enter second number: ");
-        num2 = input.nextDouble();
-        switch(operator) {
-            case '+':
-                result = num1 + num2;
-                System.out.println(num1 + " + " + num2 + " = " + result);
-                break;
-			case '-':
-                result = num1 - num2;
-                System.out.println(num1 + " - " + num2 + " = " + result);
-                break;
-            case '*':
-                result = num1 * num2;
-                System.out.println(num1 + " * " + num2 + " = " + result);
-                break;
-            case '/':
-                if (num2 == 0) {
-                    System.out.println("Error: Cannot divide by zero");
-                } else {
-                    result = num1 / num2;
-                    System.out.println(num1 + " / " + num2 + " = " + result);}
-                break;
+            System.out.print("Enter the operator (+, -, *, /): ");
+            String operator = scanner.next();
 
-            default:
-                System.out.println("Error: Invalid operator");
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+
+            double result = 0;
+
+            switch (operator) {
+                case "+":
+                    result = add(num1, num2);
+                    break;
+                case "-":
+                    result = subtract(num1, num2);
+                    break;
+                case "*":
+                    result = multiply(num1, num2);
+                    break;
+                case "/":
+                    result = divide(num1, num2);
+                    break;
+                default:
+                    System.out.println("Invalid operator");
+                    continue;
+            }
+
+            System.out.println("Result: " + result);
+
+            System.out.print("Do you want to perform another calculation? (Y/N): ");
+            String choice = scanner.next();
+
+            if (choice.equalsIgnoreCase("N")) {
                 break;
+            }
         }
+
+        System.out.println("Thank you for using the Calculator!");
+        scanner.close();
+    }
+
+    public static double add(double num1, double num2) {
+        return num1 + num2;
+    }
+
+    public static double subtract(double num1, double num2) {
+        return num1 - num2;
+    }
+
+    public static double multiply(double num1, double num2) {
+        return num1 * num2;
+    }
+
+    public static double divide(double num1, double num2) {
+        if (num2 == 0) {
+            System.out.println("Error: Division by zero");
+            return 0;
+        }
+        return num1 / num2;
     }
 }
