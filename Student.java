@@ -1,48 +1,36 @@
-class Student {
+public class Student {
+    String Fname;
+    String Lname;
+    int marks;
+    int age;
 
-    private String name;
-    private int age;
-    private char grade;
-
-    public String getName() {
-        return name;
+    public String method1() {
+        String Fullname = Fname + " " + Lname;
+        return Fullname;
     }
 
-    public void setName(String newName) {
-        this.name = newName;
+    public void method2() {
+        if (marks >= 40)
+            System.out.println("Pass");
+        else
+            System.out.println("Fail");
     }
 
-    public int getAge() {
-        return age;
+    public int method3() {
+        int b_year = 2023 - age;
+        return b_year;
     }
+            public static void main(String[] args) {
+        Student obj = new Student();
+        obj.Fname = "Sathmi";
+        obj.Lname = "Rayanika";
+        obj.marks = 45;
+        obj.age = 22;
 
-    public void setAge(int newAge) {
-        this.age = newAge;
-    }
+        System.out.println("Full Name: " + obj.method1());
+        obj.method2();
+        System.out.println("Birth Year: " + obj.method3());
 
-    public char getGrade() {
-        return grade;
     }
-
-    public void setGrade(char newGrade) {
-        this.grade = newGrade;
-    }
-
-    public void displayInfo() {
-        System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("Grade: " + grade);
-    }
+    
 }
-
-class Main {
-
-    public static void main(String[] args) {
-        Student student = new Student();
-        student.setName("John Doe");
-        student.setAge(20);
-        student.setGrade('A');
-        student.displayInfo();
-    }
-}
-
